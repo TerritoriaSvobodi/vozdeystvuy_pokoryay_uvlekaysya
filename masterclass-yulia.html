@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Воздействуй, покоряй, увлекай! — Мастер-класс Юлии Тужилиной</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e2a;
+    --navy-mid: #111840;
+    --navy-light: #1a2460;
+    --orange: #ff6a00;
+    --orange-hot: #ff8c00;
+    --orange-glow: rgba(255,106,0,0.25);
+    --silver: #c8d4e8;
+    --silver-light: #e8eef8;
+    --white: #ffffff;
+    --gold: #f0c040;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--silver-light);
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+  .display-title {
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .display-title span { color: var(--orange); }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .section-title span { color: var(--orange); }
+
+  /* ─── LAYOUT ─── */
+  section { position: relative; z-index: 1; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ─── DECORATIVE LINE ─── */
+  .deco-line {
+    display: inline-block;
+    width: 60px; height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ─── BUTTONS ─── */
+  .btn-main {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--orange) 0%, #ff3d00 100%);
+    color: var(--white);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 0 40px rgba(255,106,0,0.5), 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 60px rgba(255,106,0,0.7), 0 8px 30px rgba(0,0,0,0.5);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 2px solid var(--silver);
+    color: var(--silver);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { background: var(--silver); color: var(--navy); }
+
+  /* ───────────────────────────────────────────
+     HERO
+  ─────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(255,106,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 10% 90%, rgba(26,36,96,0.8) 0%, transparent 70%),
+      linear-gradient(160deg, #0d1236 0%, #060a1e 100%);
+    padding: 6rem 0 4rem;
+    overflow: hidden;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,106,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,106,0,0.15);
+    border: 1px solid rgba(255,106,0,0.4);
+    color: var(--orange);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--silver);
+    margin: 1.5rem 0 2rem;
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  .hero-dates {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,212,232,0.15);
+    padding: 0.6rem 1.2rem;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    color: var(--silver-light);
+    max-width: fit-content;
+  }
+  .date-pill .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px var(--orange);
+  }
+
+  /* Hero visual side */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(145deg, rgba(26,36,96,0.6), rgba(10,14,42,0.8));
+    border: 1px solid rgba(200,212,232,0.12);
+    border-radius: 8px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(255,106,0,0.06);
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,106,0,0.5), transparent, rgba(200,212,232,0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .hc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .hc-role {
+    font-size: 0.82rem;
+    color: var(--orange);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hc-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hc-stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hc-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .hc-stat .label {
+    font-size: 0.72rem;
+    color: var(--silver);
+    margin-top: 0.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ───────────────────────────────────────────
+     PAIN POINTS
+  ─────────────────────────────────────────── */
+  #pain {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(10,14,42,0) 0%, rgba(17,24,64,0.6) 50%, rgba(10,14,42,0) 100%);
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pain-card {
+    background: linear-gradient(145deg, rgba(255,106,0,0.06), rgba(255,106,0,0.02));
+    border: 1px solid rgba(255,106,0,0.2);
+    border-radius: 6px;
+    padding: 1.8rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .pain-card:hover { transform: translateY(-4px); border-color: rgba(255,106,0,0.5); }
+
+  .pain-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+
+  .pain-card p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--silver-light);
+  }
+
+  /* ───────────────────────────────────────────
+     WHAT YOU GET
+  ─────────────────────────────────────────── */
+  #whatyouget {
+    padding: 6rem 0;
+  }
+
+  .get-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .get-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .get-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255,106,0,0.2);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 3rem;
+  }
+
+  .get-text strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .get-text p {
+    font-size: 0.92rem;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+
+  /* ───────────────────────────────────────────
+     PROGRAM
+  ─────────────────────────────────────────── */
+  #program {
+    padding: 6rem 0;
+    background: radial-gradient(ellipse 100% 60% at 50% 50%, rgba(17,24,64,0.8) 0%, transparent 70%);
+  }
+
+  .program-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .prog-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,212,232,0.1);
+    border-radius: 6px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prog-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+  }
+
+  .prog-block h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .prog-block p {
+    font-size: 0.92rem;
+    color: var(--silver);
+    line-height: 1.7;
+  }
+
+  /* ───────────────────────────────────────────
+     RESULT PROMISE
+  ─────────────────────────────────────────── */
+  #results {
+    padding: 6rem 0;
+  }
+
+  .result-banner {
+    background: linear-gradient(135deg, rgba(255,106,0,0.12) 0%, rgba(26,36,96,0.6) 100%);
+    border: 1px solid rgba(255,106,0,0.25);
+    border-radius: 10px;
+    padding: 4rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-banner::before {
+    content: '"';
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 15rem;
+    color: rgba(255,106,0,0.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .result-banner p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--white);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .result-banner .highlight {
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* ───────────────────────────────────────────
+     ABOUT TRAINER
+  ─────────────────────────────────────────── */
+  #about {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(17,24,64,0.4) 0%, rgba(10,14,42,0.2) 100%);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-photo-placeholder {
+    background: linear-gradient(145deg, rgba(26,36,96,0.8), rgba(10,14,42,0.9));
+    border: 1px solid rgba(255,106,0,0.3);
+    border-radius: 8px;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-placeholder::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(0deg, rgba(255,106,0,0.1), transparent);
+  }
+
+  .photo-initial {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255,106,0,0.4);
+    line-height: 1;
+  }
+
+  .photo-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver);
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-creds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .cred-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: rgba(255,106,0,0.08);
+    border: 1px solid rgba(255,106,0,0.2);
+    padding: 0.35rem 0.8rem;
+    border-radius: 3px;
+    max-width: fit-content;
+  }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--silver);
+    border-left: 3px solid var(--orange);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    line-height: 1.7;
+  }
+
+  .about-body { font-size: 1rem; color: var(--silver); line-height: 1.8; }
+  .about-body p + p { margin-top: 1rem; }
+
+  /* ───────────────────────────────────────────
+     PRICING
+  ─────────────────────────────────────────── */
+  #pricing {
+    padding: 6rem 0;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .price-card {
+    background: linear-gradient(145deg, rgba(26,36,96,0.5), rgba(10,14,42,0.7));
+    border: 1px solid rgba(200,212,232,0.12);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .price-card:hover { transform: translateY(-5px); }
+
+  .price-card.featured {
+    border-color: rgba(255,106,0,0.5);
+    background: linear-gradient(145deg, rgba(255,106,0,0.12), rgba(10,14,42,0.8));
+    box-shadow: 0 0 60px rgba(255,106,0,0.15);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .price-format {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .price-date {
+    font-size: 1rem;
+    color: var(--silver);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-amount span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    color: var(--silver);
+    vertical-align: top;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+
+  .price-note {
+    font-size: 0.82rem;
+    color: var(--silver);
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  /* ───────────────────────────────────────────
+     WHO IS IT FOR
+  ─────────────────────────────────────────── */
+  #who {
+    padding: 6rem 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(17,24,64,0.5) 0%, transparent 70%);
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .who-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,212,232,0.08);
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  .who-item:hover { border-color: rgba(255,106,0,0.3); }
+
+  .who-emoji { font-size: 2.5rem; }
+
+  .who-item strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .who-item p { font-size: 0.85rem; color: var(--silver); }
+
+  /* ───────────────────────────────────────────
+     SOCIAL PROOF / TESTIMONIAL PLACEHOLDER
+  ─────────────────────────────────────────── */
+  #testimonials {
+    padding: 6rem 0;
+  }
+
+  .testimonial-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .testi-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,212,232,0.08);
+    border-radius: 6px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .testi-card::before {
+    content: '❝';
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-size: 3rem;
+    color: rgba(255,106,0,0.15);
+    line-height: 1;
+  }
+
+  .testi-text {
+    font-size: 0.95rem;
+    color: var(--silver);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .testi-author {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ───────────────────────────────────────────
+     CTA SECTION
+  ─────────────────────────────────────────── */
+  #cta {
+    padding: 6rem 0;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 70% 80% at 50% 50%, rgba(255,106,0,0.08) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10,14,42,0) 0%, rgba(17,24,64,0.4) 50%, rgba(10,14,42,0) 100%);
+  }
+
+  #cta .section-title { margin-bottom: 1rem; }
+  #cta p { font-size: 1.1rem; color: var(--silver); margin-bottom: 2.5rem; max-width: 550px; margin-left: auto; margin-right: auto; }
+
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ───────────────────────────────────────────
+     FAQ
+  ─────────────────────────────────────────── */
+  #faq {
+    padding: 6rem 0;
+  }
+
+  .faq-list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(200,212,232,0.1);
+  }
+
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1.3rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--orange); }
+
+  .faq-arrow {
+    font-size: 1.2rem;
+    color: var(--orange);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 1rem;
+    color: var(--silver);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .faq-a.open {
+    max-height: 300px;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .faq-item.active .faq-arrow { transform: rotate(180deg); }
+
+  /* ───────────────────────────────────────────
+     FOOTER
+  ─────────────────────────────────────────── */
+  footer {
+    background: rgba(6,10,30,0.9);
+    border-top: 1px solid rgba(200,212,232,0.08);
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  footer .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  footer .logo-text span { color: var(--orange); }
+
+  footer p {
+    font-size: 0.82rem;
+    color: rgba(200,212,232,0.4);
+    margin-top: 1rem;
+  }
+
+  /* ───────────────────────────────────────────
+     ANIMATIONS
+  ─────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 40px rgba(255,106,0,0.4), 0 4px 20px rgba(0,0,0,0.4); }
+    50%       { box-shadow: 0 0 80px rgba(255,106,0,0.7), 0 4px 20px rgba(0,0,0,0.4); }
+  }
+
+  .hero-cta .btn-main { animation: pulse-glow 3s infinite; }
+
+  [data-anim] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  [data-anim].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ───────────────────────────────────────────
+     RESPONSIVE
+  ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo-placeholder { aspect-ratio: 1; max-height: 250px; }
+    .hero-card { max-width: 100%; }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,14,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,212,232,0.06);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .nav-brand span { color: var(--orange); }
+
+  .nav-cta {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border: 1px solid rgba(255,106,0,0.5);
+    padding: 0.4rem 1rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange); color: var(--white); }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,212,232,0.15), transparent);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Юлия <span>Тужилина</span></div>
+  <a href="#cta" class="nav-cta">Записаться</a>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Мастер-класс · Live · Online</div>
+        <h1 class="display-title">
+          Воздействуй,<br>
+          <span>покоряй,</span><br>
+          увлекай!
+        </h1>
+        <p class="hero-sub">
+          Научись говорить убедительно и уверенно, управлять вниманием аудитории и превращать страх публичных выступлений в драйв.
+        </p>
+        <div class="hero-cta">
+          <a href="#cta" class="btn-main">Хочу на мастер-класс</a>
+        </div>
+        <div class="hero-dates">
+          <div class="date-pill"><span class="dot"></span> 28 апреля · 19:00–22:00 · Москва · от 1 800 ₽</div>
+          <div class="date-pill"><span class="dot"></span> 30 апреля · 12:00–14:00 · Онлайн · 990 ₽</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hc-name">Юлия Тужилина</div>
+          <div class="hc-role">Тренер ораторов</div>
+          <div class="hc-stats">
+            <div class="hc-stat">
+              <div class="num">16</div>
+              <div class="label">лет практики</div>
+            </div>
+            <div class="hc-stat">
+              <div class="num">4</div>
+              <div class="label">диплома</div>
+            </div>
+          </div>
+          <div class="about-creds">
+            <div class="cred-tag">🎭 Актриса муз. театра</div>
+            <div class="cred-tag">🎤 Магистр вокального искусства</div>
+            <div class="cred-tag">🏛️ Преподаватель МГИК</div>
+            <div class="cred-tag">💼 Коуч топ-менеджеров</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── WHO IS IT FOR ───── -->
+<section id="who">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Для <span>кого</span> этот мастер-класс?</h2>
+    <div class="who-grid" data-anim>
+      <div class="who-item">
+        <div class="who-emoji">👔</div>
+        <strong>Руководители</strong>
+        <p>Хотите, чтобы команда слушала вас с первого слова</p>
+      </div>
+      <div class="who-item">
+        <div class="who-emoji">🚀</div>
+        <strong>Предприниматели</strong>
+        <p>Продаёте идею, продукт, себя — и хотите делать это мощно</p>
+      </div>
+      <div class="who-item">
+        <div class="who-emoji">🎯</div>
+        <strong>Эксперты и спикеры</strong>
+        <p>Устали оставаться в тени более харизматичных коллег</p>
+      </div>
+      <div class="who-item">
+        <div class="who-emoji">🌱</div>
+        <strong>Те, кто начинает</strong>
+        <p>Хотите начать выступать и сразу выглядеть уверенно</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── PAIN POINTS ───── -->
+<section id="pain">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Узнаёшь <span>себя?</span></h2>
+    <div class="pain-grid" data-anim>
+      <div class="pain-card">
+        <div class="pain-icon">🤲</div>
+        <p>Руки трясутся перед аудиторией</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🎙️</div>
+        <p>Голос срывается и теряет силу в самый важный момент</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💧</div>
+        <p>Ладони потеют, мысли разбегаются</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">👁️</div>
+        <p>Сложно удержать внимание аудитории больше пары минут</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🏆</div>
+        <p>Приходится долго доказывать свою экспертность</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😶</div>
+        <p>Теряешься на фоне более ярких и харизматичных спикеров</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── WHAT YOU GET ───── -->
+<section id="whatyouget">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Что ты <span>получишь</span> на мастер-классе</h2>
+    <div class="get-grid" data-anim>
+      <div class="get-item">
+        <div class="get-num">01</div>
+        <div class="get-text">
+          <strong>Устойчивый, уверенный голос</strong>
+          <p>Настройки голоса, которые работают, даже если внутри всё ещё волнение</p>
+        </div>
+      </div>
+      <div class="get-item">
+        <div class="get-num">02</div>
+        <div class="get-text">
+          <strong>Воздействующие глаголы</strong>
+          <p>Научишься использовать язык, который вдохновляет и побуждает к действию</p>
+        </div>
+      </div>
+      <div class="get-item">
+        <div class="get-num">03</div>
+        <div class="get-text">
+          <strong>Страх → Драйв</strong>
+          <p>Превратишь волнение в топливо для ярких и запоминающихся выступлений</p>
+        </div>
+      </div>
+      <div class="get-item">
+        <div class="get-num">04</div>
+        <div class="get-text">
+          <strong>Лидерская энергетика</strong>
+          <p>Клиенты и партнёры с первых слов будут видеть в тебе лидера</p>
+        </div>
+      </div>
+      <div class="get-item">
+        <div class="get-num">05</div>
+        <div class="get-text">
+          <strong>Управление вниманием</strong>
+          <p>Актёрские техники по привлечению и удержанию аудитории</p>
+        </div>
+      </div>
+      <div class="get-item">
+        <div class="get-num">06</div>
+        <div class="get-text">
+          <strong>Новый уровень коммуникации</strong>
+          <p>Интеграция техник выведет тебя на совершенно иной уровень общения</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── PROGRAM ───── -->
+<section id="program">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Программа <span>мастер-класса</span></h2>
+    <div class="program-blocks" data-anim>
+      <div class="prog-block">
+        <h3>🎙️ Блок 1 · Голос как инструмент</h3>
+        <p>Исследуем настройки голоса. Как сделать его устойчивым и уверенным — даже когда внутри волнение. Практические упражнения из арсенала сценической речи.</p>
+      </div>
+      <div class="prog-block">
+        <h3>⚡ Блок 2 · Эмоции и слова</h3>
+        <p>Исследуем собственные эмоции. Учимся использовать воздействующие глаголы, чтобы быстрее и эффективнее достигать цели выступления или коммуникации.</p>
+      </div>
+      <div class="prog-block">
+        <h3>🔥 Блок 3 · Страх как топливо</h3>
+        <p>Работаем со страхом публичных выступлений. Тренируемся превращать его в драйв и энергию для ярких, запоминающихся выступлений.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── RESULT BANNER ───── -->
+<section id="results">
+  <div class="container">
+    <div class="result-banner" data-anim>
+      <p>
+        Уже через <span class="highlight">3 часа</span> мастер-класса ты перестанешь оставаться в тени.<br>
+        Партнёры и клиенты <span class="highlight">с первых слов</span> будут узнавать в тебе лидера.<br>
+        Ты станешь <span class="highlight">ярким, харизматичным спикером</span> — лидером мнений.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── ABOUT ───── -->
+<section id="about">
+  <div class="container">
+    <div class="deco-line"></div>
+    <div class="about-inner">
+      <div>
+        <div class="about-photo-placeholder">
+          <div class="photo-initial">Ю</div>
+          <div class="photo-name">Юлия Тужилина</div>
+        </div>
+        <div class="about-creds" style="margin-top:1.2rem">
+          <div class="cred-tag">16 лет опыта</div>
+          <div class="cred-tag">4 диплома</div>
+          <div class="cred-tag">МГИК</div>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-bottom:0.5rem">О <span>тренере</span></h2>
+        <blockquote class="about-quote">
+          «Говорят, что умею услышать и увидеть больше, чем подозревает сам говорящий»
+        </blockquote>
+        <div class="about-body">
+          <p>Меня зовут <strong style="color:var(--white)">Юлия Тужилина</strong>. Уже 16 лет я помогаю экспертам, предпринимателям и руководителям вернуть свободу самовыражения, данную каждому по праву рождения — через вокал, ораторское искусство, актёрское мастерство и телесно-голосовые практики.</p>
+          <p>Я тренер ораторов, преподаватель сценической речи в Московском государственном институте культуры, телесно-голосовой терапевт и коуч по публичным выступлениям топ-менеджеров крупных компаний.</p>
+          <p>Среди моих учеников — поступившие и окончившие «золотую пятёрку» театральных вузов. Люди идут на мою яркую энергию, заразительное жизнелюбие и любовь к людям.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── TESTIMONIALS ───── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Что говорят <span>ученики</span></h2>
+    <div class="testimonial-row" data-anim>
+      <div class="testi-card">
+        <p class="testi-text">После мастер-класса с Юлией я буквально переродился как спикер. Голос стал другим — живым. Страх превратился в азарт. Не верил, что так бывает за три часа.</p>
+        <div class="testi-author">— Руководитель, Москва</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">Юля даёт не просто техники, а понимание. Я впервые почувствовала, что аудитория слушает меня, а не смотрит на телефон. Это бесценно для эксперта.</p>
+        <div class="testi-author">— Предприниматель, онлайн-формат</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">Пришла с трясущимися руками и голосом-мышкой. Ушла с ощущением, что могу зажечь любой зал. Юлия умеет что-то такое, что сложно объяснить словами.</p>
+        <div class="testi-author">— Эксперт по маркетингу</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── PRICING ───── -->
+<section id="pricing">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Форматы и <span>стоимость</span></h2>
+    <div class="pricing-grid" data-anim>
+      <div class="price-card">
+        <div class="price-format">Офлайн · Москва</div>
+        <div class="price-date">28 апреля · 19:00–22:00</div>
+        <div class="price-amount">1 800 <span>₽</span></div>
+        <div class="price-note">Рядом со ст. м. Пушкинская</div>
+        <a href="#cta" class="btn-ghost" style="width:100%;text-align:center">Записаться</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">Выгодно вдвоём</div>
+        <div class="price-format">Офлайн · Пара</div>
+        <div class="price-date">28 апреля · 19:00–22:00</div>
+        <div class="price-amount">3 000 <span>₽</span></div>
+        <div class="price-note">За двух участников — выгода 600 ₽</div>
+        <a href="#cta" class="btn-main" style="width:100%;text-align:center">Записаться</a>
+      </div>
+      <div class="price-card">
+        <div class="price-format">Онлайн</div>
+        <div class="price-date">30 апреля · 12:00–14:00</div>
+        <div class="price-amount">990 <span>₽</span></div>
+        <div class="price-note">Из любой точки мира</div>
+        <a href="#cta" class="btn-ghost" style="width:100%;text-align:center">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── CTA ───── -->
+<section id="cta">
+  <div class="container">
+    <div class="deco-line" style="margin:0 auto 1.5rem;display:block"></div>
+    <h2 class="section-title" style="text-align:center">Готов звучать <span>мощно?</span></h2>
+    <p>Запишись на мастер-класс, получи подарок от Юлии и сделай первый шаг к свободе самовыражения</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/" class="btn-main">Записаться на МК</a>
+      <a href="https://t.me/" class="btn-ghost">Задать вопрос</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ───── FAQ ───── -->
+<section id="faq">
+  <div class="container">
+    <div class="deco-line"></div>
+    <h2 class="section-title">Частые <span>вопросы</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Нужен ли опыт публичных выступлений?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Совсем нет. Мастер-класс подходит как для начинающих, так и для тех, кто уже выступает и хочет выйти на новый уровень. Важно только желание развиваться.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Будет ли запись онлайн-формата?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Уточните этот вопрос у Юлии напрямую — напишите ей, она с радостью ответит и расскажет о всех деталях.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Что будет происходить на мастер-классе?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Три мощных блока: настройка голоса, работа с эмоциями и воздействующими словами, трансформация страха в драйв. Практика, упражнения, обратная связь от Юлии.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Есть ли подарок при записи?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Да! Юлия обещает подарить подарок всем, кто запишется. Уточните детали при записи.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Как добраться до офлайн-площадки?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Площадка находится недалеко от ст. м. Пушкинская в Москве. Точный адрес будет отправлен после записи.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="container">
+    <div class="logo-text">Юлия <span>Тужилина</span></div>
+    <div style="font-size:0.85rem;color:var(--silver);margin-top:0.3rem">Тренер ораторов · Коуч по публичным выступлениям</div>
+    <p>© 2024 Юлия Тужилина · Все права защищены</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = answer.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      item.classList.add('active');
+    }
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
